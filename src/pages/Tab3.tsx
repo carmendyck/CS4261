@@ -17,6 +17,10 @@ const Tab3: React.FC = () => {
         img.src = data[0].url
         var elm = document.getElementById("testText")!;
         elm.appendChild(img)
+        var fireReq = new XMLHttpRequest()
+        fireReq.open('POST', 'https://practice-project-403ba.firebaseio.com/message_list.json')
+        var pushData = "'{ 'url' + '" +  img.src + "' }";
+        fireReq.send(JSON.stringify(pushData));
         console.log("Should be refreshed")
       } else {
         console.log('error')
